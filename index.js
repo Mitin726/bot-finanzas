@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 
@@ -14,12 +16,7 @@ client.on('ready', () => {
 });
 
 client.on('message_create', (msg) => {
-    console.log('Mensaje recibido:', msg.body);
-    console.log('De:', msg.from);
-});
-
-client.on('message_create', (msg) => {
-    const esMiChat = msg.from === client.info.wid._serialized;
+    const esMiChat = msg.id.remote === process.env.MI_CHAT_PERSONAL;
     const esRespuestaDelBot = msg.body.startsWith('🤖');
 
     if (esMiChat && !esRespuestaDelBot) {
