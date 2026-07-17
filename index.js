@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 const { interpretarGasto } = require('./interpretar');
+const { agregarGasto } = require('./sheets');
 
 const client = new Client({
     authStrategy: new LocalAuth()
@@ -22,11 +23,12 @@ client.on('message_create', async (msg) => {
     if (esMiChat && !esRespuestaDelBot) {
         try {
             const gasto = await interpretarGasto(msg.body);
+            await agregarGasto(gasto);
             const respuesta = `🤖 Anotado Bro:\nFecha: ${gasto.fecha}\nDescripción: ${gasto.descripcion}\nValor: $${gasto.valor}\nCategoría: ${gasto.categoria}`;
             client.sendMessage(msg.from, respuesta);
         } catch (error) {
-            console.error('Error interpretando el gasto:', error);
-            client.sendMessage(msg.from, '🤖 Bro, no pude entender ese gasto, intenta de nuevo con otras palabras.');
+            console.error('Error procesando el gasto:', error);
+            client.sendMessage(msg.from, '🤖 Bro, No pude procesar ese gasto, intenta de nuevo.');
         }
     }
 });
