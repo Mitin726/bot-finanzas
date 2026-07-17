@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { parsearRespuestaJSON, extraerTexto } = require('./utilidades');
 const Anthropic = require('@anthropic-ai/sdk');
 
 const anthropic = new Anthropic({
@@ -29,7 +30,7 @@ async function interpretarConsulta(textoUsuario) {
         ]
     });
 
-    const datos = JSON.parse(respuesta.content[0].text);
+    const datos = parsearRespuestaJSON(extraerTexto(respuesta))
     const { mes, anio } = calcularMesAnio(datos.meses_atras);
 
     return { mes, anio, categoria: datos.categoria };
