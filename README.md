@@ -60,3 +60,5 @@ Este proyecto usa una **cuenta de servicio** de Google para leer/escribir en She
 Este es un proyecto personal educativo, hecho para aprender sobre integración de APIs, procesamiento de lenguaje natural y automatización.
 
 ![Gracias por leer](./assets/gracias.png)
+
+Made with ❤️ by Mitin726
