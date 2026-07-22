@@ -1,7 +1,7 @@
 ![Bot de Gastos](./assets/banner.png)
 
 # Bot de Gastos por WhatsApp
-![Status](https://img.shields.io/badge/Status-Completed-success)<br>
+![Status](https://img.shields.io/badge/Estado-Finalizado-success)<br>
 Siempre me pasa que quiero llevar mis cuentas actualizadas, sin embargo, al tener que llegar a casa y escribir cada cuenta se volvía tedioso y muchas veces se me olvidaba. Es por eso que decidí crear un bot personal que registra gastos automáticamente en Google Sheets a partir de mensajes de WhatsApp en lenguaje natural, y que además responde preguntas sobre gastos pasados.
 
 ## Funcionalidades
